@@ -26,12 +26,21 @@ describe('BookPreviewComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should show the Book Title', () => {
+    component.book = book;
+    fixture.detectChanges();
     expect(compiled.querySelector('li').innerText).toBe(book.title);
   });
 
   it('should emit the book', done => {
     component.book = book;
     fixture.detectChanges();
-    expect(false).toBeTruthy();
+    component.book = book;
+    fixture.detectChanges();
+    const btn = compiled.querySelector('.btn-info');
+    component.bookselected.subscribe(b => {
+      expect(b).toBe(book);
+      done();
+    });
+    btn.dispatchEvent(new Event('click'));
   });
 });

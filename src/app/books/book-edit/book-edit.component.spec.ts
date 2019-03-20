@@ -12,7 +12,7 @@ import {
 import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, from } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import {} from 'rxjs/operators'
 
 describe('BookEditComponent', () => {
@@ -29,7 +29,7 @@ describe('BookEditComponent', () => {
       providers: [
         {
           provide: ActivatedRoute,
-          useValue: { params: from({ isbn: 'Moin' }), snapshot: {} }
+          useValue: { params: of({ isbn: 'Moin' }), snapshot: {} }
         },
         { provide: BookService, useClass: MockBooksService }
       ]
